@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Display</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #04202e;
+            color: #fff;
+        }
+        .product-card {
+            background-color: #fff;
+            color: #000;
+            border-radius: 10px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+        .product-card:hover {
+            transform: scale(1.05);
+        }
+        .product-image {
+            height: 200px;
+            object-fit: cover;
+        }
+        .product-content {
+            padding: 20px;
+        }
+        .product-title, .product-description, .product-price {
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container my-5">
+        <h1 class="text-center mb-5">Nos Produits</h1>
+        <div class="row g-4">
+            <!-- Product Item Start -->
+            <div class="col-sm-6 col-md-4 col-lg-3">
+                <div class="liste_voiture"> 
+                    <?php foreach($voiture as $v): ?>
+                    <div class="image_voiture">  
+                        <img src="<?= htmlspecialchars($v->image) ?>">
+                        <div class="content">
+                            <h5 class="modele"><?= htmlspecialchars($v->modèle); ?></h5> 
+                            <h6 class="description"><?= htmlspecialchars($v->description); ?></h6>
+                            <h4 class="prix"><?= htmlspecialchars($v->prix); ?> Dt/J</h4> 
+                            <a href="ajout_panier.php?idv=<?= htmlspecialchars($v->idv); ?>" class="id_voiture">Ajouter au panier</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Product Item End -->
+            <!-- Add more products here -->
+        </div> 
+        <?php endforeach; ?>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+ 
+<div class="liste_voiture">
+    <?php foreach($voiture as $v): ?> 
+    <div class="voiture">
+        <div class="image_voiture">  
+            <img src="<?= htmlspecialchars($v->image) ?>">
+        </div> 
+        <div class="content"> 
+            <h5 class="modele"><?= htmlspecialchars($v->modèle); ?></h5> 
+            <h6 class="description"><?= htmlspecialchars($v->description); ?></h6>
+            <h4 class="prix"><?= htmlspecialchars($v->prix); ?> Dt/J</h4> 
+            <a href="ajout_panier.php?idv=<?= htmlspecialchars($v->idv); ?>" class="id_voiture">Ajouter au panier</a>
+        </div>
+    </div>
+    <?php endforeach; ?>
+</div>
+</body>
